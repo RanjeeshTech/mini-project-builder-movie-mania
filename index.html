@@ -14,14 +14,11 @@
 
     <!-- Font Google -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
     <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
 
     <!-- Ionic Icons -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
@@ -39,9 +36,6 @@
             <p>PROGRAD</p>
         </div>
         <div class="filters">
-            <div class="Home-link">
-                <p class="">Home</p>
-            </div>
             <div class="filter-by-language">
                 <select name="language-filter" id="language-filter">
                     <option value="Select by language" selected disabled>Sort by Language</option>
@@ -57,6 +51,9 @@
             </div>
             <div class="filter-by-upcoming">
                 <p class="upcomingSelection">Upcoming</p>
+            </div>
+            <div class="search-link" style="border: 0.2px solid #ccc; padding:5px 20px; border-radius: 10px; box-shadow: 0px 0px 2px 1px rgb(255, 189, 198);">
+                <p class=""><i class="fas fa-search"></i>&nbsp;&nbsp;<input type="text" class="search" style="border: none; outline: none; font-size: 16px;" placeholder="Search..."></p>
             </div>
         </div>
     </header>
@@ -104,7 +101,7 @@
                                             <img src="http://image.tmdb.org/t/p/w500${result.poster_path}" alt="" class="image" data-id="${result.id}">
                                         </div>
                                         <div class="likes_views">
-                                            <p class="likes"><i class="fas fa-heart"></i> ${result.vote_count} </p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p class="views"><i class="fas fa-eye"></i> 100000</p>
+                                            <p class="likes"><i class="fas fa-heart"></i> ${result.vote_count} </p><p class="views"><i class="fas fa-vote-yea"></i>&nbsp;&nbsp;${result.vote_average}</p>
                                         </div>
                                     </div>       
                                 </div>
@@ -112,13 +109,14 @@
                             contentSection.innerHTML += html;
                             document.querySelector(".no-upcoming").style.display = "none";
                         })
-                    }
-                    else {
+                    } else {
                         document.querySelector(".no-upcoming").style.display = "block";
                     }
 
                 })
-                .catch(err => { return })
+                .catch(err => {
+                    return
+                })
         }
         UpcomingButton.addEventListener("click", upcomingMovies);
 
@@ -146,7 +144,7 @@
                                             <img src="http://image.tmdb.org/t/p/w500${result.poster_path}" alt="" class="image" data-id="${result.id}">
                                         </div>
                                         <div class="likes_views">
-                                            <p class="likes"><i class="fas fa-heart"></i> ${result.vote_count} </p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p class="views"><i class="fas fa-eye"></i> 100000</p>
+                                            <p class="likes"><i class="fas fa-heart"></i> ${result.vote_count} </p><p class="views"><i class="fas fa-vote-yea"></i>&nbsp;&nbsp;${result.vote_average}</p>
                                         </div>
                                     </div>       
                                 </div>
@@ -159,40 +157,40 @@
         }
         popularSelection.addEventListener("click", popularMovies);
 
-        // document.querySelector(".HomeSelection").addEventListener('click', () => {
-        //     options[0].selected = true;
-        //     const video = document.querySelector(".video");
-        //     video.innerHTML = "";
-        //     const contentSection = document.querySelector('.content-section');
-        //     contentSection.innerHTML = "";
-        //     const videoSection = document.querySelector(".video-section");
-        //     videoSection.style.display = "none";
-        //     contentSection.style.display = "grid";
-        //     for (let i = 0; i < 500; i++) {
-        //         axios.get(`https://api.themoviedb.org/3/movie/${i}?api_key=83f9227610a6142604f957298e13a2e7`)
-        //             .then(result => {
-        //                 const html = `
-        //                             <div class="contents" data-language="${result.data.spoken_languages[0].name}">
-        //                                 <div class="movie">
-        //                                     <div class="head">
-        //                                         <p class="movie-name">${result.data.original_title}</p>
-        //                                         <p class="released-data">Released : ${result.data.release_date}</p>
-        //                                     </div>
-        //                                     <div class="img">
-        //                                         <img src="http://image.tmdb.org/t/p/w500${result.data.poster_path}" alt="" class="image" data-id="${i}">
-        //                                     </div>
-        //                                     <div class="likes_views">
-        //                                         <p class="likes"><i class="fas fa-heart"></i> ${result.data.vote_count} </p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p class="views"><i class="fas fa-eye"></i> 100000</p>
-        //                                     </div>
-        //                                 </div>       
-        //                             </div>
-        //                         `
-        //                 contentSection.innerHTML += html;
-
-        //             })
-        //             .catch(err => { return });
-        //     }
-        // })
+        window.addEventListener("load", (e) => {
+            axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=83f9227610a6142604f957298e13a2e7`)
+                .then(result => {
+                    options[0].selected = true;
+                    const video = document.querySelector(".video");
+                    video.innerHTML = "";
+                    const videoSection = document.querySelector(".video-section");
+                    videoSection.style.display = "none";
+                    const contentSection = document.querySelector('.content-section');
+                    contentSection.innerHTML = "";
+                    contentSection.style.display = "grid";
+                    result.data.results.map(result => {
+                        const html = `
+                                <div class="contents" data-language="${result.original_language}">
+                                    <div class="movie">
+                                        <div class="head">
+                                            <p class="movie-name">${result.original_title}</p>
+                                            <p class="released-data">Released on: ${result.release_date}</p>
+                                        </div>
+                                        <div class="img">                                            
+                                            <img src="http://image.tmdb.org/t/p/w500${result.poster_path}" alt="" class="image" data-id="${result.id}">
+                                        </div>
+                                        <div class="likes_views">
+                                            <p class="likes"><i class="fas fa-heart"></i> ${result.vote_count} </p><p class="views"><i class="fas fa-vote-yea"></i>&nbsp;&nbsp;${result.vote_average}</p>
+                                        </div>
+                                    </div>       
+                                </div>
+                            `
+                        contentSection.innerHTML += html;
+                        document.querySelector(".no-upcoming").style.display = "none";
+                    })
+                })
+                .catch(err => console.log(err))
+        })
 
         const goToTrailer = (e) => {
             if (!e.target.classList.contains("image")) return;
@@ -207,7 +205,7 @@
                 .then(data => data.json())
                 .then(response => {
                     const htmlFrame = `
-                            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/${response.videos.results[0].key}" frameborder="0 allowfullscreen>
+                            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/${response.videos.results[0].key}" frameborder="0" allowfullscreen>
                             </iframe>
                             <button class="go-back go-back-content">Go Back</button>
                     `
@@ -227,7 +225,7 @@
         }
 
         const goBack = (e) => {
-            if(!e.target.classList.contains("go-back")) return;
+            if (!e.target.classList.contains("go-back")) return;
             const contentSection = document.querySelector(".content-section");
             contentSection.style.display = "grid";
             const videoSection = document.querySelector(".video-section");
@@ -236,7 +234,7 @@
             videoSection.style.display = "none";
         }
 
-        document.querySelector(".video").addEventListener("click",goBack);
+        document.querySelector(".video").addEventListener("click", goBack);
 
         const changeAccordingToLanguage = (e) => {
             LanguageOptions.forEach(option => {
@@ -262,7 +260,7 @@
                                                 <img src="http://image.tmdb.org/t/p/w500${result.poster_path}" alt="" class="image" data-id="${result.id}">
                                             </div>
                                             <div class="likes_views">
-                                                <p class="likes"><i class="fas fa-heart"></i> ${result.vote_count} </p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p class="views"><i class="fas fa-eye"></i> 100000</p>
+                                                <p class="likes"><i class="fas fa-heart"></i> ${result.vote_count} </p><p class="views"><i class="fas fa-vote-yea"></i>&nbsp;&nbsp;${result.vote_average}</p>
                                             </div>
                                         </div>       
                                     </div>
@@ -277,6 +275,50 @@
         document.querySelector(".content-section").addEventListener("click", goToTrailer);
         const LanguageOptions = document.querySelectorAll("option");
         document.querySelector("#language-filter").addEventListener("change", changeAccordingToLanguage);
+
+        var searchMovie = (e) => {
+            const keyword = "" + document.querySelector(".search").value;
+            console.log(keyword);
+            if (keyword == "") {
+                popularMovies();
+            } else {
+                axios.get(`https://api.themoviedb.org/3/search/movie?api_key=83f9227610a6142604f957298e13a2e7&query=${keyword}`)
+                    .then(result => {
+                        options[0].selected = true;
+                        const video = document.querySelector(".video");
+                        video.innerHTML = "";
+                        const videoSection = document.querySelector(".video-section");
+                        videoSection.style.display = "none";
+                        const contentSection = document.querySelector('.content-section');
+                        contentSection.innerHTML = "";
+                        contentSection.style.display = "grid";
+                        result.data.results.map(result => {
+                            const html = `
+                                <div class="contents" data-language="${result.original_language}">
+                                    <div class="movie">
+                                        <div class="head">
+                                            <p class="movie-name">${result.original_title}</p>
+                                            <p class="released-data">Released on: ${result.release_date}</p>
+                                        </div>
+                                        <div class="img">                                            
+                                            <img src="http://image.tmdb.org/t/p/w500${result.poster_path}" alt="" class="image" data-id="${result.id}">
+                                        </div>
+                                        <div class="likes_views">
+                                            <p class="likes"><i class="fas fa-heart"></i> ${result.vote_count} </p><p class="views"><i class="fas fa-vote-yea"></i>&nbsp;&nbsp;${result.vote_average}</p>
+                                        </div>
+                                    </div>       
+                                </div>
+                            `
+                            contentSection.innerHTML += html;
+                            document.querySelector(".no-upcoming").style.display = "none";
+                        })
+                    })
+                    .catch(err => console.log(err))
+            }
+        }
+
+        document.querySelector(".search").addEventListener("change", searchMovie);
+        document.querySelector(".search").addEventListener("keyup", searchMovie);
     </script>
 </body>
 

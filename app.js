@@ -3,7 +3,7 @@
 //         axios.get(`https://api.themoviedb.org/3/movie/${i}?api_key=83f9227610a6142604f957298e13a2e7`)
 //         .then(result => {         
 //             const contentSection = document.querySelector('.content-section');
-     
+
 //             const html = `
 //                 <div class="contents" data-language="${result.data.spoken_languages[0].name}">
 //                     <div class="movie">
