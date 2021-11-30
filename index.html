@@ -98,7 +98,7 @@
                                             <p class="released-data">Releasing on: ${result.release_date}</p>
                                         </div>
                                         <div class="img">                                            
-                                            <img src="http://image.tmdb.org/t/p/w500${result.poster_path}" alt="" class="image" data-id="${result.id}">
+                                            <img src="https://image.tmdb.org/t/p/w500${result.poster_path}" alt="" class="image" data-id="${result.id}">
                                         </div>
                                         <div class="likes_views">
                                             <p class="likes"><i class="fas fa-heart"></i> ${result.vote_count} </p><p class="views"><i class="fas fa-vote-yea"></i>&nbsp;&nbsp;${result.vote_average}</p>
@@ -141,7 +141,7 @@
                                             <p class="released-data">Released on: ${result.release_date}</p>
                                         </div>
                                         <div class="img">                                            
-                                            <img src="http://image.tmdb.org/t/p/w500${result.poster_path}" alt="" class="image" data-id="${result.id}">
+                                            <img src="https://image.tmdb.org/t/p/w500${result.poster_path}" alt="" class="image" data-id="${result.id}">
                                         </div>
                                         <div class="likes_views">
                                             <p class="likes"><i class="fas fa-heart"></i> ${result.vote_count} </p><p class="views"><i class="fas fa-vote-yea"></i>&nbsp;&nbsp;${result.vote_average}</p>
@@ -177,7 +177,7 @@
                                             <p class="released-data">Released on: ${result.release_date}</p>
                                         </div>
                                         <div class="img">                                            
-                                            <img src="http://image.tmdb.org/t/p/w500${result.poster_path}" alt="" class="image" data-id="${result.id}">
+                                            <img src="https://image.tmdb.org/t/p/w500${result.poster_path}" alt="" class="image" data-id="${result.id}">
                                         </div>
                                         <div class="likes_views">
                                             <p class="likes"><i class="fas fa-heart"></i> ${result.vote_count} </p><p class="views"><i class="fas fa-vote-yea"></i>&nbsp;&nbsp;${result.vote_average}</p>
@@ -239,7 +239,7 @@
         const changeAccordingToLanguage = (e) => {
             LanguageOptions.forEach(option => {
                 if (option.selected == true) {
-                    axios.get(`http://api.themoviedb.org/3/discover/movie?api_key=83f9227610a6142604f957298e13a2e7&with_original_language=${option.dataset.language}`)
+                    axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=83f9227610a6142604f957298e13a2e7&with_original_language=${option.dataset.language}`)
                         .then(result => {
                             const video = document.querySelector(".video");
                             video.innerHTML = "";
@@ -257,7 +257,7 @@
                                                 <p class="released-data">Released on: ${result.release_date}</p>
                                             </div>
                                             <div class="img">                                            
-                                                <img src="http://image.tmdb.org/t/p/w500${result.poster_path}" alt="" class="image" data-id="${result.id}">
+                                                <img src="https://image.tmdb.org/t/p/w500${result.poster_path}" alt="" class="image" data-id="${result.id}">
                                             </div>
                                             <div class="likes_views">
                                                 <p class="likes"><i class="fas fa-heart"></i> ${result.vote_count} </p><p class="views"><i class="fas fa-vote-yea"></i>&nbsp;&nbsp;${result.vote_average}</p>
@@ -301,7 +301,7 @@
                                             <p class="released-data">Released on: ${result.release_date}</p>
                                         </div>
                                         <div class="img">                                            
-                                            <img src="http://image.tmdb.org/t/p/w500${result.poster_path}" alt="" class="image" data-id="${result.id}">
+                                            <img src="https://image.tmdb.org/t/p/w500${result.poster_path}" alt="" class="image" data-id="${result.id}">
                                         </div>
                                         <div class="likes_views">
                                             <p class="likes"><i class="fas fa-heart"></i> ${result.vote_count} </p><p class="views"><i class="fas fa-vote-yea"></i>&nbsp;&nbsp;${result.vote_average}</p>
