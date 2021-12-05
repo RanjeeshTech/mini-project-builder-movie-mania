@@ -77,6 +77,8 @@
         const options = document.querySelector("#language-filter");
         const UpcomingButton = document.querySelector(".upcomingSelection");
         var upcomingMovies = () => {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
             axios.get(`https://api.themoviedb.org/3/movie/upcoming?api_key=83f9227610a6142604f957298e13a2e7`)
                 .then(result => {
                     options[0].selected = true;
@@ -122,6 +124,8 @@
 
         const popularSelection = document.querySelector(".popularSelection");
         var popularMovies = () => {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
             axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=83f9227610a6142604f957298e13a2e7`)
                 .then(result => {
                     options[0].selected = true;
@@ -237,6 +241,8 @@
         document.querySelector(".video").addEventListener("click", goBack);
 
         const changeAccordingToLanguage = (e) => {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
             LanguageOptions.forEach(option => {
                 if (option.selected == true) {
                     axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=83f9227610a6142604f957298e13a2e7&with_original_language=${option.dataset.language}`)
@@ -277,6 +283,8 @@
         document.querySelector("#language-filter").addEventListener("change", changeAccordingToLanguage);
 
         var searchMovie = (e) => {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
             const keyword = "" + document.querySelector(".search").value;
             console.log(keyword);
             if (keyword == "") {
